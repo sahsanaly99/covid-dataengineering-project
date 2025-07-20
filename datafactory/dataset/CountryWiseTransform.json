@@ -1,0 +1,24 @@
+{
+	"name": "CountryWiseTransform",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CovidDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "countrywise.csv",
+				"folderPath": "covid",
+				"fileSystem": "transform-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
