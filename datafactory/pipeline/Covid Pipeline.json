@@ -122,6 +122,33 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Country wise DB notebook",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "USACountyWise",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/syedahsanali1999@outlook.com/covid-dataengineering-project/databricks-notebook/Untitled Notebook 2025-07-28 20_32_01"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
