@@ -1,0 +1,12 @@
+{
+	"name": "Http_UsaCountyWsie",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/sahsanaly99/covid-dataengineering-project/refs/heads/main/covid%20dataset/usa_county_wise.csv",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
