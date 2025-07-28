@@ -12,9 +12,9 @@
 					"type": "LinkedServiceReference"
 				},
 				"secretName": "covid-db-access-token",
-				"secretVersion": "Latest version"
+				"secretVersion": "ecc9f1cec2d6496d90b7e2e4af4f03ed"
 			},
-			"existingClusterId": "Syed Ali's Cluster 2025-07-28 20:06:29"
+			"existingClusterId": "0728-100905-iptv5imw"
 		}
 	}
 }
