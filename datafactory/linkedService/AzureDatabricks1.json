@@ -1,0 +1,20 @@
+{
+	"name": "AzureDatabricks1",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-2541954248180726.6.azuredatabricks.net",
+			"accessToken": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "covid-db-access-token",
+				"secretVersion": "Latest version"
+			},
+			"existingClusterId": "intx single node cluster"
+		}
+	}
+}
