@@ -126,7 +126,14 @@
 			{
 				"name": "Bronze to Silver",
 				"type": "DatabricksNotebook",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Worldometer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -173,7 +180,14 @@
 			{
 				"name": "Worldometer",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "USACountyWise",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
