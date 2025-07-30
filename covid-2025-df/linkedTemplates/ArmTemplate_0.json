@@ -137,7 +137,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"fileName": "countrywise.csv",
-						"fileSystem": "raw-data"
+						"fileSystem": "bronze"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -165,7 +165,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"fileName": "usacountywise.csv",
-						"fileSystem": "raw-data"
+						"fileSystem": "bronze"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -236,7 +236,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Data Ingestion CountryWise",
+						"name": "CountryWise",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -299,9 +299,9 @@
 						"type": "Copy",
 						"dependsOn": [
 							{
-								"activity": "Data Ingestion CountryWise",
+								"activity": "CountryWise",
 								"dependencyConditions": [
-									"Completed"
+									"Succeeded"
 								]
 							}
 						],
@@ -361,13 +361,13 @@
 						]
 					},
 					{
-						"name": "Country wise DB notebook",
+						"name": "Bronze to Silver",
 						"type": "DatabricksNotebook",
 						"dependsOn": [
 							{
 								"activity": "USACountyWise",
 								"dependencyConditions": [
-									"Completed"
+									"Succeeded"
 								]
 							}
 						],
@@ -380,7 +380,34 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/Users/syedahsanali1999@outlook.com/covid-dataengineering-project/databricks-notebook/Untitled Notebook 2025-07-28 20_32_01"
+							"notebookPath": "/Users/syedahsanali1999@outlook.com/covid-dataengineering-project/databricks-notebook/Bronze to Silver"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Silver to Gold",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "Bronze to Silver",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/syedahsanali1999@outlook.com/covid-dataengineering-project/databricks-notebook/Silver to Gold"
 						},
 						"linkedServiceName": {
 							"referenceName": "AzureDatabricks1",
@@ -424,6 +451,36 @@
 						"interval": 5,
 						"startTime": "2025-07-29T03:16:00",
 						"endTime": "2025-07-29T03:31:00",
+						"timeZone": "AUS Eastern Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/Covid Pipeline')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "Covid Pipeline",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 2,
+						"startTime": "2025-07-30T21:42:00",
 						"timeZone": "AUS Eastern Standard Time"
 					}
 				}

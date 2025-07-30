@@ -11,6 +11,9 @@
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://covid2025storage.dfs.core.windows.net/"
 		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "0728-100905-iptv5imw"
+		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://covid-kv.vault.azure.net/"
 		},
@@ -19,9 +22,6 @@
 		},
 		"Http_UsaCountyWsie_properties_typeProperties_url": {
 			"value": "https://raw.githubusercontent.com/sahsanaly99/covid-dataengineering-project/refs/heads/main/covid%20dataset/usa_county_wise.csv"
-		},
-		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
-			"value": "0728-100905-iptv5imw"
 		},
 		"containerUri": {
 			"value": ""
