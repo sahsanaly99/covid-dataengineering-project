@@ -124,7 +124,7 @@
 				]
 			},
 			{
-				"name": "Country wise DB notebook",
+				"name": "Bronze to Silver",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
