@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Data Ingestion CountryWise",
+				"name": "CountryWise",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -64,7 +64,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Data Ingestion CountryWise",
+						"activity": "CountryWise",
 						"dependencyConditions": [
 							"Completed"
 						]
