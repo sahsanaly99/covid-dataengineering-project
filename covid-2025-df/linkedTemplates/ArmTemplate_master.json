@@ -27,6 +27,10 @@
 			"type": "string",
 			"defaultValue": "https://raw.githubusercontent.com/sahsanaly99/covid-dataengineering-project/refs/heads/main/covid%20dataset/country_wise_latest.csv"
 		},
+		"HttpServer_Worldometer_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/sahsanaly99/covid-dataengineering-project/refs/heads/main/covid%20dataset/worldometer_data.csv"
+		},
 		"Http_UsaCountyWsie_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://raw.githubusercontent.com/sahsanaly99/covid-dataengineering-project/refs/heads/main/covid%20dataset/usa_county_wise.csv"
@@ -69,6 +73,9 @@
 					},
 					"HttpServer1_properties_typeProperties_url": {
 						"value": "[parameters('HttpServer1_properties_typeProperties_url')]"
+					},
+					"HttpServer_Worldometer_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer_Worldometer_properties_typeProperties_url')]"
 					},
 					"Http_UsaCountyWsie_properties_typeProperties_url": {
 						"value": "[parameters('Http_UsaCountyWsie_properties_typeProperties_url')]"

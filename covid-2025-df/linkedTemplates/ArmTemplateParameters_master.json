@@ -20,6 +20,9 @@
 		"HttpServer1_properties_typeProperties_url": {
 			"value": "https://raw.githubusercontent.com/sahsanaly99/covid-dataengineering-project/refs/heads/main/covid%20dataset/country_wise_latest.csv"
 		},
+		"HttpServer_Worldometer_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/sahsanaly99/covid-dataengineering-project/refs/heads/main/covid%20dataset/worldometer_data.csv"
+		},
 		"Http_UsaCountyWsie_properties_typeProperties_url": {
 			"value": "https://raw.githubusercontent.com/sahsanaly99/covid-dataengineering-project/refs/heads/main/covid%20dataset/usa_county_wise.csv"
 		},
