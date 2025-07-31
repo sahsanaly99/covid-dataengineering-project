@@ -1,8 +1,8 @@
 {
-	"name": "View gold",
+	"name": "Create covid_data_source",
 	"properties": {
 		"content": {
-			"query": "SELECT * FROM dbo.countrywise",
+			"query": "CREATE EXTERNAL DATA SOURCE covid_data_source\nWITH (\n    LOCATION = 'abfss://gold@covid2025storage.dfs.core.windows.net/'\n);",
 			"metadata": {
 				"language": "sql"
 			},
