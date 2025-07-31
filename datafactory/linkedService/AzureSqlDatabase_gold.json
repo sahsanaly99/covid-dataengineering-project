@@ -1,0 +1,14 @@
+{
+	"name": "AzureSqlDatabase_gold",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "covid-synapse-ondemand.sql.azuresynapse.net",
+			"database": "gold_db",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SystemAssignedManagedIdentity"
+		}
+	}
+}
