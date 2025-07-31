@@ -20,10 +20,11 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"itemName"
+						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -45,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Gold Table').output",
+						"value": "@activity('Get Gold Table').output.childItems",
 						"type": "Expression"
 					},
 					"activities": [

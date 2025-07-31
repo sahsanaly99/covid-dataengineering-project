@@ -2,7 +2,7 @@
 	"name": "Dyanamic db views",
 	"properties": {
 		"content": {
-			"query": "USE gold_db;\nGO\n\nCREATE OR ALTER PROC CreateSQLServerlessView_gold \n    @ViewName NVARCHAR(100)\nAS \nBEGIN\n    DECLARE @statement NVARCHAR(MAX);\n\n    SET @statement = \n        N'CREATE OR ALTER VIEW ' + QUOTENAME(@ViewName) + ' AS\n        SELECT *\n        FROM\n            OPENROWSET(\n                BULK ''covid2025storage.dfs.core.windows.net/gold/' + @ViewName + '.csv'',\n                FORMAT = ''CSV'',\n                PARSER_VERSION = ''2.0'',\n                HEADER_ROW = TRUE\n            ) AS [result];';\n\n    EXEC sp_executesql @statement;\nEND;\nGO\n",
+			"query": "USE gold_db;\nGO\n\nCREATE OR ALTER PROC CreateSQLServerlessView_gold \n    @ViewName NVARCHAR(100)\nAS \nBEGIN\n    DECLARE @statement NVARCHAR(MAX);\n\n    SET @statement = \n        N'CREATE OR ALTER VIEW ' + QUOTENAME(@ViewName) + ' AS\n        SELECT *\n        FROM\n            OPENROWSET(\n                BULK ''https://covid2025storage.dfs.core.windows.net/gold/' + @ViewName + ',\n                FORMAT = ''CSV'',\n                PARSER_VERSION = ''2.0'',\n                HEADER_ROW = TRUE\n            ) AS [result];';\n\n    EXEC sp_executesql @statement;\nEND;\nGO\n",
 			"metadata": {
 				"language": "sql"
 			},
