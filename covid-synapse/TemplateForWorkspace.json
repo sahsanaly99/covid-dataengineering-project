@@ -54,7 +54,7 @@
 								"parameters": {}
 							},
 							"fieldList": [
-								"itemName"
+								"childItems"
 							],
 							"storeSettings": {
 								"type": "AzureBlobFSReadSettings",
@@ -80,7 +80,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"items": {
-								"value": "@activity('Get Gold Table').output",
+								"value": "@activity('Get Gold Table').output.childItems",
 								"type": "Expression"
 							},
 							"activities": [
@@ -144,6 +144,33 @@
 						"fileSystem": "gold"
 					}
 				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/covid-synapse-WorkspaceDefaultStorage')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/DelimitedText1')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "covid-synapse-WorkspaceDefaultStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "gold"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/linkedServices/covid-synapse-WorkspaceDefaultStorage')]"
@@ -245,12 +272,12 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/Create Gold View')]",
+			"name": "[concat(parameters('workspaceName'), '/Create covid_data_source')]",
 			"type": "Microsoft.Synapse/workspaces/sqlscripts",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
 				"content": {
-					"query": "CREATE VIEW gold_db_view AS\nSELECT TOP 100 *\nFROM OPENROWSET(\n    BULK 'https://covid2025storage.dfs.core.windows.net/raw-data/countrywise.csv',\n    FORMAT = 'CSV',\n    PARSER_VERSION = '2.0'\n) WITH (\n    -- Optional: define schema for better performance\n    Cases INT,\n    Deaths INT\n) AS [result];\n",
+					"query": "CREATE EXTERNAL DATA SOURCE covid_data_source\nWITH (\n    LOCATION = 'abfss://gold@covid2025storage.dfs.core.windows.net/'\n);",
 					"metadata": {
 						"language": "sql"
 					},
@@ -270,7 +297,7 @@
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
 				"content": {
-					"query": "USE gold_db;\nGO\n\nCREATE OR ALTER PROC CreateSQLServerlessView_gold \n    @ViewName NVARCHAR(100)\nAS \nBEGIN\n    DECLARE @statement NVARCHAR(MAX);\n\n    SET @statement = \n        N'CREATE OR ALTER VIEW ' + QUOTENAME(@ViewName) + ' AS\n        SELECT *\n        FROM\n            OPENROWSET(\n                BULK ''covid2025storage.dfs.core.windows.net/gold/' + @ViewName + '.csv'',\n                FORMAT = ''CSV'',\n                PARSER_VERSION = ''2.0'',\n                HEADER_ROW = TRUE\n            ) AS [result];';\n\n    EXEC sp_executesql @statement;\nEND;\nGO\n",
+					"query": "USE gold_db;\nGO\n\nCREATE OR ALTER PROC CreateSQLServerlessView_gold \n    @ViewName NVARCHAR(100)\nAS \nBEGIN\n    DECLARE @statement NVARCHAR(MAX);\n\n    SET @statement = \n        N'CREATE OR ALTER VIEW ' + QUOTENAME(REPLACE(@ViewName, '.csv', '')) + ' AS\n        SELECT *\n        FROM\n            OPENROWSET(\n                BULK ''/' + @ViewName + ''',\n                DATA_SOURCE = ''covid_data_source'',\n                FORMAT = ''CSV'',\n                PARSER_VERSION = ''2.0'',\n                HEADER_ROW = TRUE\n            ) AS [result];';\n\n    EXEC sp_executesql @statement;\nEND;\nGO\n",
 					"metadata": {
 						"language": "sql"
 					},
@@ -290,7 +317,7 @@
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
 				"content": {
-					"query": "DROP VIEW dbo.gold_db_view",
+					"query": "SELECT * FROM dbo.countrywise",
 					"metadata": {
 						"language": "sql"
 					},
