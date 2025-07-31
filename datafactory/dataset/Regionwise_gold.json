@@ -1,0 +1,56 @@
+{
+	"name": "Regionwise_gold",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "regionwise.csv",
+				"fileSystem": "gold"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "who_region",
+				"type": "String"
+			},
+			{
+				"name": "total_confirmed",
+				"type": "String"
+			},
+			{
+				"name": "total_deaths",
+				"type": "String"
+			},
+			{
+				"name": "total_recovered",
+				"type": "String"
+			},
+			{
+				"name": "total_active",
+				"type": "String"
+			},
+			{
+				"name": "avg_mortality_rate",
+				"type": "String"
+			},
+			{
+				"name": "avg_recovery_rate",
+				"type": "String"
+			},
+			{
+				"name": "avg_weekly_growth_rate",
+				"type": "String"
+			}
+		]
+	}
+}

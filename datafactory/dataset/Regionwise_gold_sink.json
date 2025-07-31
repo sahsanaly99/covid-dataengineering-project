@@ -1,5 +1,5 @@
 {
-	"name": "Countrywise_gold",
+	"name": "Regionwise_gold_sink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "regionwise.csv",
+				"fileName": "regionwisesink.csv",
+				"folderPath": "sink",
 				"fileSystem": "gold"
 			},
 			"columnDelimiter": ",",
