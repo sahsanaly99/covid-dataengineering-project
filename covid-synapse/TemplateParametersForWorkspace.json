@@ -8,6 +8,12 @@
 		"covid-synapse-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:covid-synapse.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
+		"AzureSqlDatabase_Covid_properties_typeProperties_server": {
+			"value": "covid-synapse-ondemand.sql.azuresynapse.net"
+		},
+		"AzureSqlDatabase_Covid_properties_typeProperties_database": {
+			"value": "gold_db"
+		},
 		"covid-synapse-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"value": "https://covid2025storage.dfs.core.windows.net"
 		}
