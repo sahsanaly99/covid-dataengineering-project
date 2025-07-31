@@ -17,6 +17,18 @@
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://covid-kv.vault.azure.net/"
 		},
+		"AzureSqlDatabase_gold_properties_typeProperties_server": {
+			"value": "covid-synapse-ondemand.sql.azuresynapse.net"
+		},
+		"AzureSqlDatabase_gold_properties_typeProperties_database": {
+			"value": "gold_db"
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_server": {
+			"value": "covid-synapse-ondemand.sql.azuresynapse.net"
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_database": {
+			"value": "gold_db"
+		},
 		"HttpServer1_properties_typeProperties_url": {
 			"value": "https://raw.githubusercontent.com/sahsanaly99/covid-dataengineering-project/refs/heads/main/covid%20dataset/country_wise_latest.csv"
 		},

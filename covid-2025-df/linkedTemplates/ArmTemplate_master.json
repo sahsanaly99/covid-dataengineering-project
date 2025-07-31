@@ -23,6 +23,22 @@
 			"type": "string",
 			"defaultValue": "https://covid-kv.vault.azure.net/"
 		},
+		"AzureSqlDatabase_gold_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "covid-synapse-ondemand.sql.azuresynapse.net"
+		},
+		"AzureSqlDatabase_gold_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "gold_db"
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "covid-synapse-ondemand.sql.azuresynapse.net"
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "gold_db"
+		},
 		"HttpServer1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://raw.githubusercontent.com/sahsanaly99/covid-dataengineering-project/refs/heads/main/covid%20dataset/country_wise_latest.csv"
@@ -70,6 +86,18 @@
 					},
 					"AzureKeyVault1_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"AzureSqlDatabase_gold_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase_gold_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase_gold_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase_gold_properties_typeProperties_database')]"
+					},
+					"AzureSynapseAnalytics1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSynapseAnalytics1_properties_typeProperties_server')]"
+					},
+					"AzureSynapseAnalytics1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSynapseAnalytics1_properties_typeProperties_database')]"
 					},
 					"HttpServer1_properties_typeProperties_url": {
 						"value": "[parameters('HttpServer1_properties_typeProperties_url')]"
