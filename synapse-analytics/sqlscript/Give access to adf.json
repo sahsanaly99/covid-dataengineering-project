@@ -1,0 +1,17 @@
+{
+	"name": "Give access to adf",
+	"properties": {
+		"content": {
+			"query": "CREATE USER [covid-2025-df] FROM EXTERNAL PROVIDER;\n\nALTER ROLE db_datareader ADD MEMBER [covid-2025-df];\nALTER ROLE db_datawriter ADD MEMBER [covid-2025-df];\n\n\nGRANT CONTROL ON DATABASE::gold_db TO [covid-2025-df];\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "gold_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
