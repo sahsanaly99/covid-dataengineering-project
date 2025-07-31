@@ -2,7 +2,7 @@
 	"name": "View gold",
 	"properties": {
 		"content": {
-			"query": "SELECT * from gold_db_view",
+			"query": "DROP VIEW dbo.gold_db_view",
 			"metadata": {
 				"language": "sql"
 			},
