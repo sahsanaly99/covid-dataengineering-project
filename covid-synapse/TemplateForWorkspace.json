@@ -30,7 +30,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('workspaceName'), '/Gold Pipeline')]",
+			"name": "[concat(parameters('workspaceName'), '/Gold_Pipeline')]",
 			"type": "Microsoft.Synapse/workspaces/pipelines",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
