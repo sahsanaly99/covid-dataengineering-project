@@ -1,0 +1,7 @@
+who_region,total_confirmed,total_deaths,total_recovered,total_active,avg_mortality_rate,avg_recovery_rate,avg_weekly_growth_rate
+Europe,3299523,211144,1993723,1096642,4.2,68.63,7.77
+Western Pacific,292428,8249,206770,77409,1.29,76.81,22.11
+Africa,723207,12223,440645,270339,2.31,57.01,18.09
+Eastern Mediterranean,1490744,38339,1201400,251005,3.56,66.59,10.48
+Americas,8839290,342732,4468616,4027938,3.05,62.2,16.33
+South-East Asia,1835297,41349,1156933,637015,1.3,66.7,8.51

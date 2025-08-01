@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vulnerabilityAssessments_Default_storageContainerPath": {
+            "value": null
+        },
+        "vaults_covid_kv_name": {
+            "value": null
+        },
+        "workspaces_covid_synapse_name": {
+            "value": null
+        },
+        "workspaces_covid_databricks_name": {
+            "value": null
+        },
+        "storageAccounts_covid2025storage_name": {
+            "value": null
+        }
+    }
+}
